@@ -3,14 +3,14 @@
 <h1 class="mb-4">Creer un nouveau Film</h1>
 
 <form action="" method="post" enctype="multipart/form-data">
+    <div id="preview-container" class="d-flex justify-content-center" style="width:300px; height:auto">
+        <img id="image-preview" alt="Image Preview" style="width:100%">
+    </div>
+    <div class="mb-5">
+        <label for="imageuploader" class="form-label">Ajouter votre fichier</label>
+        <input type="file" name="imageuploader" id="imageuploader" class="form-control" onchange="previewImage()">
+    </div>
     <div class="input-group mb-3">
-        <div id="preview-container" class="d-flex justify-content-center">
-            <img id="image-preview" alt="Image Preview">
-        </div>
-        <div class="mb-5">
-            <label for="imageuploader" class="form-label">Add file</label>
-                <input type="file" name="imageuploader" id="imageuploader" class="form-control" onchange="previewImage()">
-        </div>
         <?php $error = checkEmptyFields('title'); ?>
         <span class="input-group-text w-25">Titre</span>
         <input type="text" class="form-control <?= $error['class']; ?>"  id="title" name="title">
