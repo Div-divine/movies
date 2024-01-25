@@ -3,10 +3,10 @@
 <h1 class="mb-4">Creer un nouveau Film</h1>
 
 <form action="" method="post" enctype="multipart/form-data">
-    <div id="preview-container" class="d-flex justify-content-center" style="width:300px; height:auto">
+    <div id="preview-container" class="d-flex justify-content-center mb-3" style="width:300px; height:auto; margin-left:auto; margin-right:auto">
         <img id="image-preview" alt="Image Preview" style="width:100%">
     </div>
-    <div class="mb-5">
+    <div class="mb-3">
         <label for="imageuploader" class="form-label">Ajouter votre fichier</label>
         <input type="file" name="imageuploader" id="imageuploader" class="form-control" onchange="previewImage()">
     </div>
