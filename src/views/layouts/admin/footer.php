@@ -1,7 +1,7 @@
 	</main>
 	<script>
 		function previewImage() {
-			const fileInput = document.getElementById('imageuploader');
+			const fileInput = document.getElementById('imageFile');
 			const previewContainer = document.getElementById('preview-container');
 			const imagePreview = document.getElementById('image-preview');
 

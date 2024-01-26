@@ -7,8 +7,8 @@
         <img id="image-preview" alt="Image Preview" style="width:100%">
     </div>
     <div class="mb-3">
-        <label for="imageuploader" class="form-label">Ajouter votre fichier</label>
-        <input type="file" name="imageuploader" id="imageuploader" class="form-control" onchange="previewImage()">
+        <label for="imageFile" class="form-label">Ajouter votre fichier</label>
+        <input type="file" name="imageFile" id="imageFile" class="form-control" onchange="previewImage()">
     </div>
     <div class="input-group mb-3">
         <?php $error = checkEmptyFields('title'); ?>
