@@ -38,6 +38,12 @@
 		<label for="floatingInput">Email</label>
 		<?= $error['message']; ?>
     </div>
+	<div class="form-floating sec">
+		<?php $error = checkEmptyFields('email'); ?>
+		<input type="email" name="email-confirm" class="form-control <?= $error['class']; ?>" id="floatingConfirm" placeholder="Confirm Email">
+		<label for="floatingConfirm">Confirm your email here</label>
+		<?= $error['message']; ?>
+    </div>
     <div class="form-floating">
 		<?php $error = checkEmptyFields('pwd'); ?>
 		<input type="password" name="pwd" class="form-control <?= $error['class']; ?>" id="floatingPassword" placeholder="Mot de passe">

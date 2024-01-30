@@ -22,3 +22,8 @@ if (!empty($_POST)) {
 	}
 
 	}  
+
+
+function validateFile(){
+        return '';
+}        
