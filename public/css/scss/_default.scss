@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    background-color: #ffffff;
+    font-size: 16px;
+    font-family: $default-font;
+    color: var(--default-color);
+}
+
+.wrapper{
+    width:100%;
+    max-width: 1200px;
+    margin:0 auto;
+    font-size: 1rem;
+}
+
+img{
+    width : 100%;
+}
+
