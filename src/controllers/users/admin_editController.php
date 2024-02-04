@@ -2,19 +2,29 @@
 
 $errorsMessage = [
 	'email' => false,
-	'pwd' => false,
-	'pwdConfirm' => false
+	'name' => false,
 ];
 
 if (!empty($_POST)) {
+	// Check name already exist
+	/*
+	if (!empty($_POST['name'])) {
+		
+		if (!empty(checkAlreadyExistName())) {
+			$errorsMessage['name'] = 'Nom existe déjà';
+		}
+		
+	}
+	*/
+	
 	// Check email format and already exist
 	if (!empty($_POST['email'])) {
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 			$errorsMessage['email'] = 'Email non valide';
-		} else if (!empty(checkAlreadyExistEmail())) {
-			$errorsMessage['email'] = 'Email existe déjà';
 		}
 	}
+
+	/*
 
 	// Check password format and match with password confirm
 	if (!empty($_POST['pwd'])) {
@@ -26,16 +36,15 @@ if (!empty($_POST)) {
 		}
 	}
 
-	// Save user in database
-	if (!empty($_POST['email']) && !empty($_POST['pwd']) && !empty($_POST['pwdConfirm'])) {
-		if (!$errorsMessage['email'] && !$errorsMessage['pwd'] && !$errorsMessage['pwdConfirm']) {
+	*/
+
+	// Update user in database
+	if (!empty($_POST['email']) && !empty($_POST['name'])) {
+		if (!$errorsMessage['email'] && !$errorsMessage['name'] ) {
 
 			if (!empty($_GET['id'])) {
 				updateUser();
-			} else {
-				addUser();
-			}
-
+			} 
 			// Redirection to users list
 			header('Location: '.$router->generate('Users'));
 		} else {

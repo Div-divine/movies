@@ -15,7 +15,6 @@ require SRC . 'includes/forms.php';
 
 $router = new AltoRouter();
 //$router->setBasePath('/movies');
-
 require SRC . 'routes/public.php';
 require SRC . 'routes/admin.php';
 

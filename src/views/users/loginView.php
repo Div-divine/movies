@@ -38,17 +38,15 @@
 		<label for="floatingInput">Email</label>
 		<?= $error['message']; ?>
     </div>
-	<div class="form-floating sec">
-		<?php $error = checkEmptyFields('email'); ?>
-		<input type="email" name="email-confirm" class="form-control <?= $error['class']; ?>" id="floatingConfirm" placeholder="Confirm Email">
-		<label for="floatingConfirm">Confirm your email here</label>
-		<?= $error['message']; ?>
-    </div>
     <div class="form-floating">
 		<?php $error = checkEmptyFields('pwd'); ?>
 		<input type="password" name="pwd" class="form-control <?= $error['class']; ?>" id="floatingPassword" placeholder="Mot de passe">
 		<label for="floatingPassword">Mot de passe</label>
 		<?= $error['message']; ?>
+    </div>
+	<div class="form-floating sec">
+		<input type="email" name="confirm" class="form-control" id="floatingConfirm" placeholder="Confirm email">
+		<label for="floatingConfirm">Confirm your email here</label>
     </div>
     <button class="btn btn-primary w-100 py-2" type="submit">Connexion</button>
     <p class="mt-4 mb-3 text-body-secondary text-center">

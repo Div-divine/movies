@@ -27,3 +27,11 @@
     }
 
 }
+@mixin active-sidebar{
+    background-color:#356444;
+	height:65px;
+    display:flex;
+    flex-wrap:wrap;
+    align-content:center;
+}
+

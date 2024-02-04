@@ -1,4 +1,5 @@
 	</main>
+	</div>
 	<script>
 		function previewImage() {
 			const fileInput = document.getElementById('imageFile');

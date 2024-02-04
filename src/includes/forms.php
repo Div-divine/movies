@@ -30,3 +30,11 @@ function getValue (string $field): string
 	}
 	return '';
 }
+
+function getFromUrl ($field)
+{
+	if (isset($_GET[$field])) {
+		return $_GET[$field];
+	}
+	return '';
+}

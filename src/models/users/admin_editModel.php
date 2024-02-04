@@ -3,6 +3,7 @@
 /**
  * Check if the email is already in the database
  */
+/*
 function checkAlreadyExistEmail (): mixed
 {
 	global $db;
@@ -21,21 +22,44 @@ function checkAlreadyExistEmail (): mixed
 
 	return $query->fetch();
 }
+function checkAlreadyExistName (): mixed
+{
+	global $db;
+	if(!empty($_GET['id'])){
+		$name = getUser()->name;
+
+		if($name == ucwords($_POST['name'])){
+			return false;
+		}
+	}
+
+	$sql = 'SELECT nom FROM users WHERE nom = :nom';
+	$query = $db->prepare($sql);
+	$query->bindParam(':nom', ucwords($_POST['name']), PDO::PARAM_STR);
+	$query->execute();
+
+	return $query->fetch();
+}
+*/
 
 /**
  * Add a user in the database
  */
+
+ /*
+
 function addUser ()
 {
 	global $db;
 	$data = [
+		'nom' => ucwords($_POST['name']),
 		'email' => $_POST['email'],
 		'pwd' => password_hash($_POST['pwd'], PASSWORD_DEFAULT),
 		'role_id' => 1
 	];
 
 	try {
-		$sql = 'INSERT INTO users (id, email, pwd, role_id) VALUES (UUID(), :email, :pwd, :role_id)';
+		$sql = 'INSERT INTO users (id, nom, email, pwd, role_id) VALUES (UUID(), :nom ,:email, :pwd, :role_id)';
 		$query = $db->prepare($sql);
 		$query->execute($data);
 		alert('Un utilisateur a bien été ajouté.', 'success');
@@ -45,22 +69,30 @@ function addUser ()
 			die;
 		}else{
 			alert('Une erreur est survenue lors de la connexion');
-		}
+		} 
 		
 	}
 }
 
+*/
 
-function updateUser () : void
+
+
+
+/**
+ * Get current User
+ */
+
+ function updateUser () : void
 {
 	global $db;
 	$data = [
+		'nom' => ucwords($_POST['name']),
 		'email' => $_POST['email'],
-		'pwd' => password_hash($_POST['pwd'], PASSWORD_DEFAULT),
 		'id' => $_GET['id']
 	];
 	try{
-		$sql = 'UPDATE users SET email = :email, pwd = :pwd WHERE id = :id';
+		$sql = 'UPDATE users SET nom = :nom, email = :email WHERE id = :id';
 		$query = $db->prepare($sql);
 		$query->execute($data);
 		alert('La modification a été faite avec success.', 'success');
@@ -85,7 +117,7 @@ function updateUser () : void
  {
 	try{
 		global $db;
-		$sql = 'SELECT email FROM users WHERE id= :id';
+		$sql = 'SELECT email, nom FROM users WHERE id= :id';
 		$query = $db->prepare($sql);
 		$query->execute(['id' => $_GET['id']]);
 	
@@ -95,7 +127,7 @@ function updateUser () : void
 			dump($e->getMessage());
 			die;
 		}else{
-			alert('Une erreur est survenue. Merci e réessayer plus tard.', 'danger');
+			alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
 		}
 	}
 }

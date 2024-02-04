@@ -1,32 +1,22 @@
 <?php get_header('Editer un utilisateur', 'admin'); ?>
 
-<h1 class="mb-4">Editer un utilisateur</h1>
-
-<form action="" method="post" novalidate>
+<form action="" method="post" class="mt-5" novalidate>
+    <div class="mb-4">
+		<?php $error = checkEmptyFields('name'); ?>
+		<label for="<?= getFromUrl('id')?>" class="form-label" style="color: grey; border: 0px;font-weight: bold">Nom : *</label>
+		<input type="text" name="name" id="<?= getFromUrl('id')?>" value="<?= getValue('nom'); ?>" class="form-control <?= $error['class']; ?>" style="background-color: #191919; color: grey; border: 1px solid grey;">
+		<?= $error['message']; ?>
+		<?= $errorsMessage['name']; ?>
+	</div>
 	<div class="mb-4">
 		<?php $error = checkEmptyFields('email'); ?>
-		<label for="email" class="form-label">Adresse email : *</label>
-		<input type="email" name="email" id="email" value="<?= getValue('email'); ?>" class="form-control <?= $error['class']; ?>">
+		<label for="email" class="form-label" style="color: grey; border: 0px;font-weight: bold">Adresse email : *</label>
+		<input type="email" name="email" id="email" value="<?= getValue('email'); ?>" class="form-control <?= $error['class']; ?>" style="background-color: #191919; color: grey; border: 1px solid grey;">
 		<?= $error['message']; ?>
 		<?= $errorsMessage['email']; ?>
 	</div>
-	<div class="mb-4">
-		<?php $error = checkEmptyFields('pwd'); ?>
-		<label for="pwd" class="form-label">Mot de passe : *</label>
-		<input type="password" name="pwd" id="pwd" class="form-control <?= $error['class']; ?>">
-		<p class="form-text mb-0">La regle des mdp ( Votre mots de passe doit comporter un Majuscule, un nombre, une signe et 12 charactères au minimum )</p>
-		<?= $error['message']; ?>
-		<?= $errorsMessage['pwd']; ?>
-	</div>
-	<div class="mb-4">
-		<?php $error = checkEmptyFields('pwdConfirm'); ?>
-		<label for="pwd-confirm" class="form-label">Confirmation du mot de passe : *</label>
-		<input type="password" name="pwdConfirm" id="pwd-confirm" class="form-control <?= $error['class']; ?>">
-		<?= $error['message']; ?>
-		<?= $errorsMessage['pwdConfirm']; ?>
-	</div>
-	<div>
-		<input type="submit" class="btn btn-success" value="Sauvegarder">
+	<div class="d-flex justify-content-center">
+		<input type="submit" class="btn submit" value="Sauvegarder">
 	</div>
 </form>
 

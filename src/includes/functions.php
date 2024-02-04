@@ -1,4 +1,7 @@
 <?php
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 /**
  * Get the header
  * @param  string $title  The title of the page
@@ -80,4 +83,24 @@ function logoutTimer()
 		}
 
 	}
+}
+
+
+function resizeImage($target, $imageName){
+	$manager = new ImageManager(new Driver());
+	$image = $manager->read($target. '/'. $imageName);
+    $image->scale(width: 350);
+    $image->save($target. '/'. $imageName);
+}
+
+function convertTimeStringToTime($timeString) {
+    // Extract hours and minutes
+    $hours = (int) strtok($timeString, 'h');
+    $minutes = (int) strtok('m');
+
+    // Convert to seconds
+    $totalSeconds = $hours * 3600 + $minutes * 60;
+
+    // Format as TIME
+    return gmdate('H:i:s', $totalSeconds);
 }
