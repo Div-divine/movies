@@ -1,6 +1,6 @@
 <?php get_header('List des categories', 'admin'); ?>
 
-<div class="mb-5">
+<div class="mb-5 mt-5">
     <a href="<?= $router->generate('addCategorie')?>" class="categorieAdd">Ajouter une nouvelle catégorie</a>
 </div>
 <div>

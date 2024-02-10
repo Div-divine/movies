@@ -26,22 +26,24 @@ function limitAttemps()
         }
     }
 }
+
 if(empty($_POST['confirm'])){
     if(!empty($_POST['email']) && !empty($_POST['pwd'])){
         $accessUser = checkUserAcess();
             if(!empty($accessUser)){
                 $_SESSION['user'] = [
-                    'id' => $accessUser,
-                    'lastLogin' => date('Y-m-d H:i:s')
+                    'id' => $accessUser->id,
+                    'lastLogin' => date('Y-m-d H:i:s'),
+                    'name' => $accessUser->nom
         
                 ];
-                saveLastLogin($accessUser);
+                saveLastLogin($accessUser->id);
                 unset($_SESSION['attemps']);
         
                 alert('Connexion faites avec success', 'success');
-                header('Location: '. $router->generate('createFilms'));
+                header('Location: '. $router->generate('listFilms'));
                 die;
-            }else{
+            }else {
                 limitAttemps();
                 alert('Identifiants Incorrects', 'danger');
             }

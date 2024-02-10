@@ -1,6 +1,6 @@
 <?php get_header('Liste des utilisateur', 'admin'); ?>
 
-<h2>Liste des utilisateurs</h2>
+<h2 class="mt-5 mb-3">Liste des utilisateurs</h2>
 
 <div>
     <table class="table custom-table table-bordered border-black">

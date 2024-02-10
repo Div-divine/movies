@@ -3,13 +3,13 @@
 function checkUserAcess()
 {
     global $db;
-    $sql='SELECT id, pwd FROM users WHERE email = :email';
+    $sql='SELECT id, nom, pwd FROM users WHERE email = :email';
     $query = $db->prepare($sql);
     $query->execute(['email' => $_POST['email']]);
 
-    $user = $query->fetch();
+    return $user = $query->fetch();
     if(password_verify($_POST['pwd'], $user->pwd)){
-        return $user->id;
+        return $user;
     }else{
         return false;
     }
