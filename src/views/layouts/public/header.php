@@ -34,16 +34,15 @@
 		.cast-image-frame{
 			width: 211px;
 			height: auto;
-			border: 3px solid #356444;
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: column;
 			justify-content: center;
-			border-radius: 0px 16px 0px 16px;
 		}
 		.cast-image-frame img {
 			border-radius: 0px 16px 0px 16px;
 			width:100%;
+			border: 3px solid #356444;
 		}
 		
 		.star-cast{
@@ -75,10 +74,10 @@
 			flex-wrap: wrap;
 			flex-direction: column;
 			justify-content: center;
-			box-shadow: 2px 2px 2px #FAB931;
 
 		}
 		.img-frame img{
+			box-shadow: 2px 3px 3px 2px #FAB931;
 			width:100%;
 			height: auto;
 		}
@@ -265,6 +264,9 @@
 			background-color: #BE3131;
 			padding: 10px 0px 10px 0px;
 		}
+		.carousel-images{
+			box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(255, 255, 255, 0.12) 0px -12px 30px, rgba(255, 255, 255, 0.12) 0px 4px 6px, rgba(255, 255, 255, 0.17) 0px 12px 13px, rgba(255, 255, 255, 0.09) 0px -3px 5px;
+        }
 	</style>
 
 </head>
@@ -320,9 +322,9 @@
 						</svg>
 					</div>
 					<div class="form-field">
-						<form action="" method="post">
+						<form action="<?= $router->generate('search')?>" method="post">
 							<input type="text" placeholder="Rechercher films ou séries ..."
-								style="background-color: #111111; border-top: 0px; border-right: 0px; border-left: 0px;color : #FFFFFF;">
+								style="background-color: #111111; border-top: 0px; border-right: 0px; border-left: 0px;color : #FFFFFF;" name="search">
 						</form>
 					</div>
 				</div>
