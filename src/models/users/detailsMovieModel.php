@@ -117,18 +117,21 @@ function ConfigureTime($duration)
     return $formattedDuration;
 }
 
+// Get categories id
 
-// Select other films of the same categorie
-/*
-function FilmsOfTheSameCategorie($id){
+function selectCategoriesId($id)
+{
+
     global $db;
     try {
-        foreach($id as $id){
-            $sql = "SELECT ";
-            $data = $db->prepare($sql);
-            $data->execute([':movie_id' => $id]);
-            return $data->fetchAll(PDO::FETCH_ASSOC);
-        }
+        $sql = "SELECT categories.id AS categorie_id
+        FROM movies
+        JOIN movies_categories ON movies.id = movies_categories.movies_id
+        JOIN categories ON movies_categories.categories_id = categories.id
+        WHERE movies.id = :movie_id";
+        $data = $db->prepare($sql);
+        $data->execute([':movie_id' => $id]);
+        return $data->fetchAll(PDO::FETCH_ASSOC);
 
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
@@ -138,6 +141,31 @@ function FilmsOfTheSameCategorie($id){
             alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
         }
     }
-
 }
-*/
+
+// Select other films of the same categorie
+
+function FilmsOfTheSameCategorie($categories){
+    global $db;
+    try {
+        $result = [];
+
+        foreach($categories as $category){
+            $categoryId = $category['categorie_id'];
+            $sql = "SELECT movies_id FROM movies_categories WHERE categories_id = :id";
+            $data = $db->prepare($sql);
+            $data->execute([':id' => $categoryId]);
+            $result[$categoryId] = $data->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $result;
+
+    } catch (PDOException $e) {
+        if ($_ENV['DEBUG'] == 'true') {
+            dump($e->getMessage());
+            die;
+        } else {
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
+        }
+    }
+}
