@@ -42,12 +42,14 @@
 </div>
 <div class="style-all">
     <?php foreach ($orderMovies as $movie) { ?>
+        <a href="<?= $router->generate('details', ['slug' => $movie->slug])?>">
         <div class="other-images mt-3">
             <img src="/<?= $movie->poster ?>" alt="<?= $movie->title ?>">
             <div class="d-flex justify-content-center poster-text">
                 <a href="" class="editer-link text-demand">Voir details</a>
             </div>
         </div>
+    </a>
     <?php } ?>
 </div>
 

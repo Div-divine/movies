@@ -64,6 +64,8 @@ function selectMoviesWithTheirCasts($id)
         }
     }
 }
+
+
 function selectMoviesWithTheirCategories($id)
 {
 

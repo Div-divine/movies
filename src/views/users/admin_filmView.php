@@ -93,7 +93,9 @@
     <p class="recent-addText">Ajouté récenment</p>
 </div>
 <div class="style-all">
-    <?php foreach ($fisrtFourFilms as $user) { ?>
+    <?php foreach ($fisrtFourFilms as $user) { // format date to d-m-Y 
+        $date = new DateTime($user['dates']); 
+        $formattedDate = $date->format('d-m-Y');?>
         <div class="mt-3">
         <div class="d-flex justify-content-between">
                 <a href="" class="editer-link">Editer</a>
@@ -119,7 +121,7 @@
                     </div>
                     <div class="mb-2">
                         <p>Date de sortie :
-                            <?= $user['dates'] ?>
+                            <?= $formattedDate?>
                         </p>
                     </div>
                     <div class="mb-2">

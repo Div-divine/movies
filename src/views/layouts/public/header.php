@@ -17,6 +17,106 @@
 	<link rel="stylesheet" href="/public/css/main.css">
 
 	<style>
+		.align-star{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+		}
+		.star-casts-align{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 100%;
+		}
+		.star-casts-align div{
+			width: 33%;
+		}
+		.cast-image-frame{
+			width: 211px;
+			height: auto;
+			border: 3px solid #356444;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			justify-content: center;
+			border-radius: 0px 16px 0px 16px;
+		}
+		.cast-image-frame img {
+			border-radius: 0px 16px 0px 16px;
+			width:100%;
+		}
+		
+		.star-cast{
+			font-family: 'Zilla Slab', sans-serif;
+			font-weight: 700;
+		}
+		.styling{
+			background: linear-gradient(90deg, rgba(43,44,45,1) 0%, rgba(3,20,50,1) 100%);
+			padding: 10px 0px 10px 10px;
+			border-radius: 0px 16px 16px 0px;
+			border: 1px solid rgb(41, 40, 40);
+		}
+		.align-icons{
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.description-frame{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		.img-frame{
+			width: 300px;
+			height: auto;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			justify-content: center;
+			box-shadow: 2px 2px 2px #FAB931;
+
+		}
+		.img-frame img{
+			width:100%;
+			height: auto;
+		}
+		.description-texts-frame{
+			width: 920px;
+			height: auto;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.align-icons-text{
+			display:flex;
+			flex: wrap;
+			justify-content: space-evenly;
+			width: 600px;
+		}
+		.text-frame{
+			width: 500px;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.synopsis-align{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content:space-between;
+			width: 500px;
+		}
+		.synopsis-title{
+			width: 75px;
+		}
+		.synopsis-text{
+			text-align: justify;
+            text-justify: inter-word;
+			width: 420px;
+		}
 		.resize-bigimage {
 			width: 1000px;
 			margin-left: auto;
