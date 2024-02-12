@@ -199,11 +199,13 @@
                     </div>
                     <div class="text-frame">
                         <p class="title">Catégorie(s) :
-                            <?php foreach($filmCategories as $categorie){
+                            <?php foreach ($filmCategories as $categorie) {
                                 $catToUpper = ucwords($categorie['categorie_name']);
-                                $newString = preg_replace('/\s/', ',', $catToUpper);?>
-                            <span><?= preg_replace('/\s([A-Z])/', ',$1',  $newString)?></span>
-                            <?php }?>
+                                $newString = preg_replace('/\s/', ',', $catToUpper); ?>
+                                <span>
+                                    <?= preg_replace('/\s([A-Z])/', ',$1', $newString) ?>
+                                </span>
+                            <?php } ?>
                         </p>
                     </div>
                 </div>
@@ -344,6 +346,33 @@
             </div>
         </div>
     <?php } ?>
+
+</div>
+<div class="mt-5 mb-4">
+    <p class="star-cast">LES FILMS DE MÊME CATEGORIE(S)</p>
+</div>
+<div class="style-all">
+    <?php
+    $displayedTitles = [];
+    $valueToRemove = $_GET['slug'];
+    foreach ($movie as $cats) {
+        foreach ($cats as $cat) {
+            $films = getFilms($cat['movies_id']);
+            $filmPosterToRemove = removeFilm($valueToRemove);
+            $filmPoster = $films['poster'];
+
+            // Check if the title has not been displayed already
+            if (!in_array($filmPoster, $displayedTitles)) { 
+                ?>
+                    <div class="mb-3">
+                        <img src="/<?= str_replace($filmPosterToRemove['poster'], '',    $filmPoster) ?>" alt="">
+                    </div>
+                <?php 
+                $displayedTitles[] =     $filmPoster;  
+            }
+        }
+    }
+    ?>
 
 </div>
 <div class="mt-5 mb-4">
