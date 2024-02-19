@@ -35,3 +35,31 @@
     align-content:center;
 }
 
+@mixin display-flex-column-center{
+    display: flex;
+    flex: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin display-flex-justify-spacebetween {
+    display: flex;
+    flex: wrap;
+    justify-content: space-between;
+}
+
+@mixin display-flex-justify-content-center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+@mixin flex-justify-space-around{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+@mixin flex-justify-space-evenly{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

@@ -3,13 +3,9 @@ header {
 	padding-bottom : 20px;
 	background-color: var(--background-color);
 
+
 	input[type="submit"]{
 		@include button;
 	}
-}
-
-.salutation {
-	width: 1330px;
-	background-color : rgb(41, 40, 40);
 }
 

@@ -27,284 +27,31 @@ $backgroundAddCategories = (($_SERVER['REQUEST_URI'] === $router->generate('addC
 	<link rel="stylesheet" href="/public/css/main.css">
 
 	<style>
-		.editer-link{
-			color:grey;
-		}
-		.editer-link:hover{
-			color: #FAB931 ;
-		}
-		.other-images{
-			margin-bottom: 10px;
-		}
-		.edit-form{
-			border: 1px solid #464545;
-		}
 		.style-all{
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
 			width: 1200px;
 		}
-		.style-all .flex-imageWithText{
-               width: 570px;
-		}
-	
-		.image{
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-			justify-content: center;
-		}
-
-		textarea#floatingTextarea{
-			background-color: transparent;
-			border: transparent;
-		}
-		textarea#floatingTextarea::placeholder{
-			color: #FFFFFF;
-		}
-		.admin-homeview{
-			width: 140px;
-		}
-		.flex-imageWithText{
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			background: linear-gradient(90deg, rgba(43,44,45,1) 0%, rgba(3,20,50,1) 100%);
-			padding: 20px 10px 20px 10px;
-			border-radius: 0px 16px 16px 0px;
-			border: 1px solid rgb(41, 40, 40);
-		}
-		.setarea{
-			width: 70%;
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-			justify-content: center;
-		}
-		.synopsis-view{
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
-		.synopsis-view p{
-			width: 15%;
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-			justify-content: center;
-			
-		}
-		.synopsis-view form{
-			width: 85%;
-		}
-		
-		.recent-addText{
-			font-family: 'Inter', sans-serif;
-			font-weight: 700;
-		}
-
-		.salutation {
-			margin-top: 20px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-		}
-
-		.search-film {
-			background-color: #3B3F43;
-			border: 2px solid #000000;
-			border-radius: 16px;
-		}
-
-		.search-film::placeholder {
-			font-size: 20px;
-		}
-
-		.icon-greetings {
-			width: 300px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-		}
-
-		.salutation {
-			width: 1000px;
-			height: auto;
-			background-color: #3B3F43;
-			margin-right: auto;
-			margin-left: auto;
-			border: 2px solid #000000;
-			font-family: 'Zilla Slab', serif;
-			font-size: 30px;
-			font-style: italic;
-			padding: 20px;
-		}
-
-		.editUserHolder::placeholder {
-			color: grey;
-		}
-
-		a {
-			text-decoration: none;
-			color: white;
-		}
-
-		.categorieAdd {
-			background-color: #31497D;
-			padding: 5px;
-		}
-
-		ul {
-			list-style-type: none;
-		}
-
-		.admin-body {
-			background-color: #191919;
-			color: #ffffff;
-		}
-
-		.logo {
-			font-family: 'Inter', sans-serif;
-			font-weight: 700;
-			font-size: 25px;
-			text-shadow: -1px -1px 0 #356444, 3px -1px 0 #356444, -1px 3px 0 #356444, 3px 3px 0 #356444;
-		}
-
-		.admin-navbar {
-			background-color: #111111;
-			height: 72px;
-			font-size: 16px;
-		}
-
-		.active-circle {
-			width: 15px;
-			height: 15px;
-			background-color: #356444;
-			border-radius: 100%;
-			margin-top: 5px;
-		}
-
-		.text-admin {
-			color: #FAB931;
-			font-family: 'Zilla Slab', serif;
-			font-style: italic;
-			font-weight: 700;
-			letter-spacing: 1px;
-		}
-
-		.text-admin:hover {
-			color: #FAB931;
-		}
-
-		.admin-profile {
-			width: 100px;
-			height: auto;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-		}
-
-		.admin-frame {
-			width: 150px;
-			height: auto;
-			background-color: #6c757d32;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			border-radius: 16px;
-			padding: 10px;
-		}
-
-		.disconnect-button a {
-			color: #F17976;
-		}
-
-		.disconnect-button a:hover {
-			color: #BE3131;
-		}
-
-		.navbar-icon {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
-
-		.icon-center {
-			width: 114px;
-			margin-right: auto;
-			margin-left: auto;
-		}
-
-		.sidebar {
-			background-color: #111111;
-			width: 110px;
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-			justify-content: center;
-		}
 
 		.navbaradd-movies {
-			background-color:
-				<?= $backgroundAddmovies ?>
-			;
-			height: 65px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
+			background-color: <?= $backgroundAddmovies ?> ;
 		}
 
 		.admin-home {
-			background-color:
-				<?= $backgroundAdminhome ?>
-			;
-			height: 65px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
+			background-color: <?= $backgroundAdminhome ?> ;
 		}
 
 		.users {
-			background-color:
-				<?= $backgroundViewusers ?>
-			;
-			background-color:
-				<?= $backgroundAddusers ?>
-			;
-			background-color:
-				<?= $backgroundEditUsers ?>
-			;
-			height: 65px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
+			background-color: <?= $backgroundViewusers ?> ;
+			background-color: <?= $backgroundAddusers ?> ;
+			background-color: <?= $backgroundEditUsers ?> ;
 		}
 
 		.categories {
-			background-color:
-				<?= $backgroundCategories ?>
-			;
-			background-color:
-				<?= $backgroundAddCategories ?>
-			;
-			background-color:
-				<?= $backgroundEditCategories ?>
-			;
-			height: 65px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-
-		.public-view {
-			height: 65px;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
+			background-color: <?= $backgroundCategories ?> ;
+			background-color: <?= $backgroundAddCategories ?> ;
+			background-color: <?= $backgroundEditCategories ?> ;
 		}
 
 		.container {
@@ -313,48 +60,6 @@ $backgroundAddCategories = (($_SERVER['REQUEST_URI'] === $router->generate('addC
 			margin-left: auto;
 		}
 
-		.placeholder-color::placeholder {
-			color: grey;
-		}
-
-		input[type="date"]::-webkit-calendar-picker-indicator {
-			color: grey;
-			/* Set the desired color for the calendar icon */
-			filter: invert(1);
-			/* Invert the color for better visibility */
-			cursor: pointer;
-		}
-
-		.submit {
-			background-color: #FAB931;
-			font-weight: bold;
-		}
-
-		.submit:hover,
-		.editButton:hover,
-		.categorieAdd:hover {
-			background-color: #356444;
-			color: #FFFFFF;
-		}
-
-		.custom-table thead th {
-			background-color: #356444;
-			/* Set your desired color */
-			color: #FFFFFF;
-			/* Set text color for better visibility */
-		}
-
-		.custom-table tbody td {
-			background-color: #3B3F43;
-			/* Set your desired color */
-			color: grey;
-			/* Set text color for better visibility */
-		}
-
-		.spaceheader-main {
-			
-			background-color: #111111;
-		}
 	</style>
 </head>
 

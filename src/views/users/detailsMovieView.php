@@ -363,10 +363,11 @@
 
             // Check if the title has not been displayed already
             if (!in_array($filmPoster, $displayedTitles)) { 
-                ?>
-                    <div class="mb-3">
+                ?>  <a href="<?= $router->generate('details', ['slug' => $films['slug']])?>">
+                     <div class="mb-3">
                         <img src="/<?= str_replace($filmPosterToRemove['poster'], '',    $filmPoster) ?>" alt="">
                     </div>
+                    </a>
                 <?php 
                 $displayedTitles[] =     $filmPoster;  
             }

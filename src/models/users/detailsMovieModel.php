@@ -1,10 +1,7 @@
 <?php
-/**
- * Get the film's ID using the slug
- *
- * @return int|string The film's ID or an error message if an exception occurs.
- */
-function selectFilmId() :int|string {
+// Get the films id using the slug
+
+function selectFilmId(){
     global $db;
     $sql = "SELECT id FROM movies WHERE slug = :slug";
     $smt = $db->prepare($sql);
@@ -12,23 +9,21 @@ function selectFilmId() :int|string {
         $smt->execute(['slug' => $_GET['slug']]);
         $result = $smt->fetch(PDO::FETCH_ASSOC);
         return $result['id'];
+
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
             dump($e->getMessage());
             die;
         } else {
-            alert('An error occurred. Please try again later.', 'danger');
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
         }
     }
 }
 
-/**
- * Get all information from the movies table for a given ID
- *
- * @param int $id The film's ID
- * @return array The film's information or an error message if an exception occurs.
- */
-function selectedFilmInfo(int $id) :array {
+// Get all from the movies table
+
+function selectedFilmInfo($id)
+{
     global $db;
     try {
         $sql = "SELECT * FROM movies WHERE id = :id";
@@ -36,23 +31,22 @@ function selectedFilmInfo(int $id) :array {
         $data->bindParam(':id', $id);
         $data->execute();
         return $data->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
             dump($e->getMessage());
             die;
         } else {
-            alert('An error occurred. Please try again later.', 'danger');
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
         }
     }
 }
 
-/**
- * Get casts by film
- *
- * @param int $id The film's ID
- * @return array The casts information for the film or an error message if an exception occurs.
- */
-function selectMoviesWithTheirCasts(int $id) :array {
+// Get casts by film
+
+function selectMoviesWithTheirCasts($id)
+{
+
     global $db;
     try {
         $sql = "SELECT casts.id AS cast_id, casts.nom AS cast_name, casts.img AS cast_image
@@ -63,23 +57,21 @@ function selectMoviesWithTheirCasts(int $id) :array {
         $data = $db->prepare($sql);
         $data->execute([':movie_id' => $id]);
         return $data->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
             dump($e->getMessage());
             die;
         } else {
-            alert('An error occurred. Please try again later.', 'danger');
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
         }
     }
 }
 
-/**
- * Select Categories of film
- *
- * @param int $id The film's ID
- * @return array The categories information for the film or an error message if an exception occurs.
- */
-function selectFilmCategories(int $id) :array {
+// Select Categories of film
+function selectFilmCategories($id)
+{
+
     global $db;
     try {
         $sql = "SELECT categories.id AS categorie_id, categories.nom AS categorie_name
@@ -90,69 +82,132 @@ function selectFilmCategories(int $id) :array {
         $data = $db->prepare($sql);
         $data->execute([':movie_id' => $id]);
         return $data->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
         if ($_ENV['DEBUG'] == 'true') {
             dump($e->getMessage());
             die;
         } else {
-            alert('An error occurred. Please try again later.', 'danger');
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
         }
     }
 }
 
-/**
- * Configure date output
- *
- * @param string $duration The film's duration in the format HH:MM:SS
- * @return string The formatted duration or an empty string if an exception occurs.
- */
-function ConfigureTime(string $duration) :string {
-    // ... (remaining code as it is)
+// Configure date output
+
+function ConfigureTime($duration)
+{
+    // Split the duration into hours, minutes, and seconds
+    list($hours, $minutes, $seconds) = explode(':', $duration);
+
+    // Convert the parts to integers
+    $hours = intval($hours);
+    $minutes = intval($minutes);
+    $seconds = intval($seconds);
+
+    // Build the formatted string
+    $formattedDuration = '';
+    if ($hours > 0) {
+        $formattedDuration .= $hours . 'h ';
+    }
+    if ($minutes > 0 || $hours > 0) {
+        $formattedDuration .= sprintf('%02d', $minutes) . 'm';
+    }
+
+    return $formattedDuration;
 }
 
-/**
- * Select Categories ID
- *
- * @param int $id The film's ID
- * @return array The categories IDs for the film or an error message if an exception occurs.
- */
-function selectCategoriesId(int $id) :array {
+// Get categories id
+
+function selectCategoriesId($id)
+{
+
     global $db;
     try {
-        // ... (remaining code as it is)
+        $sql = "SELECT categories.id AS categorie_id
+        FROM movies
+        JOIN movies_categories ON movies.id = movies_categories.movies_id
+        JOIN categories ON movies_categories.categories_id = categories.id
+        WHERE movies.id = :movie_id";
+        $data = $db->prepare($sql);
+        $data->execute([':movie_id' => $id]);
+        return $data->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
-        // ... (remaining code as it is)
+        if ($_ENV['DEBUG'] == 'true') {
+            dump($e->getMessage());
+            die;
+        } else {
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
+        }
     }
 }
 
-/**
- * Select other films ID of the same category
- *
- * @param array $categories The array of categories for a film
- * @return array The films IDs for the same categories or an error message if an exception occurs.
- */
-function FilmsOfTheSameCategorie(array $categories) :array {
+// Select other films id of the same categorie
+
+function FilmsOfTheSameCategorie($categories){
     global $db;
     try {
-        // ... (remaining code as it is)
+        $result = [];
+
+        foreach($categories as $movie){
+            $movieId = $movie['categorie_id'];
+            $sql = "SELECT movies_id FROM movies_categories WHERE categories_id = :id";
+            $data = $db->prepare($sql);
+            $data->execute([':id' => $movieId]);
+            $result[$movieId] = $data->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $result;
+
     } catch (PDOException $e) {
-        // ... (remaining code as it is)
+        if ($_ENV['DEBUG'] == 'true') {
+            dump($e->getMessage());
+            die;
+        } else {
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
+        }
     }
 }
 
-/**
- * Get films of the same categories using the previously selected category ID
- *
- * @param int $id The film's ID
- * @return array The films information for the same categories or an error message if an exception occurs.
- */
-function getFilms(int $id) :array {
+// Get films of the same categories using the previous selected category id
+function getFilms($id)
+{
     global $db;
     try {
-        // ... (remaining code as it is)
+            $sql = "SELECT slug, poster FROM movies WHERE id = :id";
+            $data = $db->prepare($sql);
+            $data->execute([':id' => $id]);
+            return $data->fetch(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
-        // ... (remaining code as it is)
+        if ($_ENV['DEBUG'] == 'true') {
+            dump($e->getMessage());
+            die;
+        } else {
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
+        }
     }
 }
 
-/**
+//Display all films of the same categories exception of the current film
+
+function removeFilm($slug){
+
+    global $db;
+    try {
+            $sql = "SELECT poster FROM movies WHERE slug = :slug";
+            $data = $db->prepare($sql);
+            $data->execute([':slug' => $slug]);
+            return $data->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        if ($_ENV['DEBUG'] == 'true') {
+            dump($e->getMessage());
+            die;
+        } else {
+            alert('Une erreur est survenue. Merci de réessayer plus tard.', 'danger');
+        }
+    }
+    
+}

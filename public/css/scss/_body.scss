@@ -1,0 +1,603 @@
+
+
+// ----------------------------------------------------------------------------------------------------
+.editer-link{
+	color: var(--color-link-grey);
+
+	&:hover{
+       color: var(--color-link-hover-yellow);
+	}
+}
+
+
+.text-demand {
+    font-family: $public-title-font;
+    font-weight: 700;
+    font-style: italic;
+}
+.text-demand:hover{
+    color:var(--color-link-hover-yellow);
+}
+
+.recent-addText {
+    font-family: $default-title-font;
+    font-weight: 700;
+}
+
+// public style -------------------------------------------------------------------
+
+// set container for all public pages
+
+.container {
+    width: 1300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// Homepage
+
+
+// style logo
+
+.logo {
+    @include display-flex-column-center;
+    font-size: 25px;
+    font-family: $default-title-font;
+    font-weight: 700;
+    text-shadow: var(--logo-shadow);
+}
+
+// style menu items 
+    // Style logo with text à la demande
+    /* Add a class to the SVG for styling */
+		.hoverable-svg path {
+			transition: fill 0.3s ease;
+			/* Add a smooth transition effect */
+		}
+
+		/* Change the fill color when hovering */
+		.hoverable-svg:hover path {
+			fill: var(--color-footer-btn);
+			/* Change the fill color to blue on hover */
+		}
+    .In-demand {
+        width: 168px;
+        @include flex-justify-space-around;
+    }
+    .demand-div {
+        @include display-flex-column-center;
+    }
+
+    // Style the search bar 
+
+    .search {
+        width: 250px;
+        @include flex-justify-space-around;
+        background-color: var(--background-color);
+    }
+
+    .search-icon {
+        @include display-flex-column-center;
+    }
+    .form-field {
+        @include display-flex-column-center;
+    }
+
+    // style icon and text of (se connecter )
+
+    .connect-div {
+        width: 160px;
+        @include flex-justify-space-around;
+        background-color: var(--background-color);
+    }
+// Header menu style    
+    header {
+        background-color: var(--background-color);
+    }
+    .menu-items {
+        width: 735px;
+        @include display-flex-justify-spacebetween;
+    }
+
+    .menu-frame {
+        width: 1300px;
+        @include display-flex-justify-spacebetween;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+// Style home carousel shadow 
+.carousel-images{
+    box-shadow: var(--public-carousel-shadow);
+}    
+
+// style sections nouveaux films and autres in public homepage
+.poster-text{
+    background-color: var(--color-red);
+    padding: 10px 0px 10px 0px;
+}
+
+// Style all is used also for admin
+.style-all {
+    @include display-flex-justify-spacebetween;
+    width: 1300px;
+
+
+    .other-images{
+        width : 22%;
+        transition: 1s;
+    }
+    .other-images:hover {
+        width : 23%;
+        margin-bottom: 10px;
+    }
+    .flex-imageWithText {
+        width: 570px;
+    }
+}
+// set link color
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+// Inherit class from admin to set background-color and color
+
+.admin-body {
+    background-color: var(--admin-background-color);
+    color: var(--primary-color);
+}
+
+
+
+// description page
+// this sets the poster of films of the same categories in film description
+    
+
+// I mostly use frame instead of container :) 
+// style the casts photos alongside their container(frame) in film description
+
+.cast-image-frame{
+    width: 211px;
+    height: auto;
+    @include display-flex-column-center;
+
+    img {
+        border-radius: 0px 16px 0px 16px;
+        width:100%;
+        border: 3px solid var(--color-green);
+    }
+}
+
+.align-star{
+    @include flex-justify-space-evenly;
+}
+.star-casts-align{
+    @include display-flex-justify-spacebetween;
+    width: 100%;
+
+    div{
+        width: 33%;
+    }
+}
+
+// style title in film description
+.star-cast{
+    font-family: $public-title-font;
+    font-weight: 700;
+}
+
+// Style the container of film description which has the film poster and texts (description)
+.styling{
+    background: linear-gradient(90deg, #2b2c2d 0%, #031432 100%);
+    padding: 10px 0px 10px 10px;
+    border-radius: 0px 16px 16px 0px;
+    border: 1px solid #292828;
+}
+
+.description-frame{
+    @include display-flex-justify-spacebetween;
+}
+     // Style the poster of film in description
+     .img-frame{
+        width: 300px;
+        height: auto;
+        @include display-flex-column-center;
+
+    }
+    .img-frame img{
+        box-shadow: 2px 3px 3px 2px var(--color-link-hover-yellow);
+        width:100%;
+        height: auto;
+    }
+
+    // center texts in their parent frame 
+    .description-texts-frame{
+        width: 920px;
+        height: auto;
+        @include display-flex-column-center;
+    }
+    .text-frame{
+        width: 500px;
+        @include display-flex-column-center;
+    }
+
+    // Style synopsis
+
+    .synopsis-align{
+        @include display-flex-justify-spacebetween;
+        width: 500px;
+    }
+    .synopsis-title{
+        width: 75px;
+    }
+    .synopsis-text{
+        text-align: justify;
+        text-justify: inter-word;
+        width: 420px;
+    }
+    // style icons with the text 
+
+    .align-icons-text{
+        @include flex-justify-space-evenly;
+        width: 600px;
+    }
+
+    // center icons in their parent container
+
+    .align-icons{
+        @include display-flex-column-center;
+    }
+
+// Style footer 
+.footer{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    border-top: 0.5px solid var(--color-green);
+    padding: 15px;
+} 
+.footer-items-main-frame{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.footer-items-frame{
+    @include flex-justify-space-evenly;
+    width: 600px;
+}
+
+    // Texts
+    .footer-text{
+        font-family: $public-title-font;
+        font-size: 15px;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    // Titles
+
+    .footer-title{
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+    }
+    .items-title{
+        font-family: $default-title-font;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 5px;
+        border-bottom: 2px solid var(--color-footer-btn);
+        padding: 2px;
+    }
+
+    // Two buttons at footer créer un compte and se connecter
+    .big-frame-btn{
+        width:500px; 
+    }
+    .btn-frame{
+       @include  display-flex-justify-content-center;
+        width: 400px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .footer-btn{
+        width:252px;
+        height: auto;
+        padding : 15px;
+        background-color: var(--color-footer-btn);
+        border-radius: 16px;
+    }
+
+    // frame of buttons and the catchy title 
+    .title-and-btn-frame{
+        @include display-flex-column-center;
+        width: 600px;
+    }
+
+// Admin -------------------------------------------------------------------------------------
+
+
+// Header background-color
+.spaceheader-main {
+			
+    background-color: #111111;
+}
+// Frame containing the string admin and active dot
+
+.admin-profile {
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+// This is the bigger frame 
+.admin-frame {
+    width: 150px;
+    height: auto;
+    background-color: #6c757d32;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+    // Admin green dot representing active style
+
+    .active-circle {
+        width: 15px;
+        height: 15px;
+        background-color: #356444;
+        border-radius: 100%;
+        margin-top: 5px;
+    }
+
+    // Style the string admin
+
+    .text-admin {
+        color: #FAB931;
+        font-family: 'Zilla Slab', serif;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+// Disconnection style
+.disconnect-button a {
+    color: #F17976;
+
+    &:hover {
+        color: #BE3131;
+    }    
+}
+// Style the two icons in the nav-bar
+
+.navbar-icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.icon-center {
+    width: 114px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+//Style both side-bar and nav-bar all together
+.navbaradd-movies,
+.admin-home,
+.users,
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 65px;
+}
+
+
+// Style the side-bar
+
+.sidebar {
+    background-color: #111111;
+    width: 110px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+    // Style the eye icon 
+    .public-view {
+        height: 65px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+// Admin welcome message frame with serach bar
+.salutation {
+    width: 1300px;
+    height: auto;
+    background-color: #3B3F43;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid #000000;
+    font-family: 'Zilla Slab', serif;
+    font-size: 30px;
+    font-style: italic;
+    padding: 20px;
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+// styling the hand shake icon in the welcom frame
+
+.icon-greetings {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+// Style the border of the textarea of the synopsis in first page
+
+.edit-form{
+    border: 1px solid var(--admin-synopsis-border);
+}
+
+// Centrer les image 
+.image{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// set image size
+.admin-homeview{
+    width: 140px;
+}
+// Style text area 
+textarea#floatingTextarea{
+    background-color: transparent;
+    border: transparent;
+
+    &::placeholder{
+        color: #FFFFFF;
+    }
+}
+// admin home description frame to separate image from text 
+.flex-imageWithText{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: linear-gradient(90deg, rgba(43,44,45,1) 0%, rgba(3,20,50,1) 100%);
+    padding: 20px 10px 20px 10px;
+    border-radius: 0px 16px 16px 0px;
+    border: 1px solid rgb(41, 40, 40);
+}
+
+  // This is the frame for texts alone excluding the image
+  .setarea{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+   // The synopsis and it text area styling
+   .synopsis-view{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+    // styling the title synopsis alone
+    .synopsis-view {
+
+        p{
+            width: 15%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        // Style it's text area
+        form{
+			width: 83%;
+		}
+        
+    }
+
+// Admin search bar
+.search-film {
+    background-color: #3B3F43;
+    border: 2px solid #000000;
+    border-radius: 16px;
+
+    &::placeholder {
+        font-size: 20px;
+    }  
+} 
+
+
+// Categories 
+// Style the input field of the page ajouter categories
+
+    // Btn style
+    .categorie-add {
+        background-color: #31497D;
+        padding: 5px;
+    }
+
+    // Input fied
+    .editUserHolder::placeholder {
+        color: #808080;
+    }
+
+    .admin-navbar {
+        background-color: #111111;
+        height: 72px;
+        font-size: 16px;
+    }
+
+// place holder style in input field Durée du film    
+    .placeholder-color::placeholder {
+        color: grey;
+    }
+
+// Style the calendar icon in the page ajouter film in input field date    
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        color: grey;
+        /* Set the desired color for the calendar icon */
+        filter: invert(1);
+        /* Invert the color for better visibility */
+        cursor: pointer;
+    }
+
+// Form submission btn 
+.submit {
+    background-color: #FAB931;
+    font-weight: bold;
+
+    &:hover,
+    .editButton:hover,
+    .categorieAdd:hover {
+    background-color: #356444;
+    color: #FFFFFF;
+
+    }
+}
+
+// adding additional style to tables 
+.custom-table {
+    thead th {
+        background-color: #356444;
+        /* Set your desired color */
+        color: #FFFFFF;
+        /* Set text color for better visibility */
+    }
+    tbody td {
+        background-color: #3B3F43;
+        /* Set your desired color */
+        color: grey;
+        /* Set text color for better visibility */
+    }
+}
+
+
+.style-all .flex-imageWithText{
+    width: 570px;
+}
+
+
+
+  
+
+ 

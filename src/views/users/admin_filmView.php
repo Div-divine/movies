@@ -82,8 +82,8 @@
     </div>
 
     <div>
-        <form action="" method="post">
-            <input type="search" class="search-film" placeholder="Rechercher les films ou séries par nom...">
+        <form action="<?= $router->generate('searchFilms')?>" method="post">
+            <input type="search" class="search-film" placeholder="Rechercher les films ou séries par nom..." name="search-film">
         </form>
     </div>
 
@@ -96,8 +96,8 @@
     <?php foreach ($fisrtFourFilms as $user) { // format date to d-m-Y 
         $date = new DateTime($user['dates']); 
         $formattedDate = $date->format('d-m-Y');?>
-        <div class="mt-3">
-        <div class="d-flex justify-content-between">
+        <div class="mt-3 admin-div">
+            <div class="d-flex justify-content-between">
                 <a href="" class="editer-link">Editer</a>
                 <a href="" class="editer-link">Voir Autres details</a>
             </div>

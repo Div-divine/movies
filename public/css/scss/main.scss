@@ -5,18 +5,32 @@
 	--active-color: #d23c9b;
 	--background-color: #111111;
 	--default-color: #000000;
-}
+	--color-link-grey: #808080;
+	--color-link-hover-yellow : #FAB931;
+	--color-red : #BE3131;
+	--color-green : #356444;
+	--color-footer-btn : #31497D;
+	--admin-background-color: #191919;
+	--admin-synopsis-border : #464545;
+	--logo-shadow: -1px -1px 0 #356444, 3px -1px 0 #356444, -1px 3px 0 #356444, 3px 3px 0 #356444;;
+	--public-carousel-shadow : #ffffff40 0px 54px 55px, #ffffff1f 0px -12px 30px, #ffffff1f 0px 4px 6px, #ffffff2b 0px 12px 13px, #ffffff17 0px -3px 5px;
+}  
+
 
 
 
 // Font
 $title-font: 'Roboto', sans serif;
 $default-font: 'Cursive', sans serif;
+$public-title-font : "Zilla Slab", serif;
+$default-title-font: 'Inter', sans-serif;
+
 // Imports
 @import '_reset';
 @import '_mixins';
 @import '_default';
 @import '_header';
+@import '_body'
 // @import '_fonts';
 // @import '_footer';
 // @import '_home';
